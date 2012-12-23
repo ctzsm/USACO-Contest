@@ -1,13 +1,15 @@
 #!/bin/bash
 
-for ((i = 1;i <= 16;i = i + 1))
+for ((i = 1;i <= 10;i = i + 1))
 do
-cp ${i}.in bbreeds.in
-./a.out
-cmp ${i}.out bbreeds.out
+cp ${i}.in wifi.in
+./3
+cmp ${i}.out wifi.out
 if [ $? = 0 ] ; then
 echo "TEST CASE $i PASSED"
+else
+diff ${i}.out wifi.out
 fi
 done
 
-rm bbreeds.in bbreeds.out
+rm wifi.in wifi.out
